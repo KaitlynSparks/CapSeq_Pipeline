@@ -1,4 +1,3 @@
-# Created by venv; see https://docs.python.org/3/library/venv.html
 *.sqlite
 bin/*
 lib/*
@@ -8,3 +7,13 @@ share/*
 *.cfg
 log.txt
 attributes.csv
+data/input/CaptureSEQ_results/adult_DLPFC_coloured_by_expr_str.bed
+data/input/CaptureSEQ_results/capture_counts.tsv
+data/input/CaptureSEQ_results/CAUD_coloured_by_expr_str.bed
+data/input/CaptureSEQ_results/fetal_DLPFC_coloured_by_expr_str.bed
+data/input/CaptureSEQ_results/HIP_coloured_by_expr_str.bed
+data/temp_files/masked_adult_DLPFC_coloured_by_expr_str.bed
+data/temp_files/masked_CAUD_coloured_by_expr_str.bed
+data/temp_files/masked_fetal_DLPFC_coloured_by_expr_str.bed
+data/temp_files/masked_HIP_coloured_by_expr_str.bed
+data/temp_files/masking_bedfile.bed
