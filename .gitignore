@@ -12,8 +12,6 @@ data/CaptureSEQ_results/capture_counts.tsv
 data/CaptureSEQ_results/CAUD_coloured_by_expr_str.bed
 data/CaptureSEQ_results/HIP_coloured_by_expr_str.bed
 data/CaptureSEQ_results/fetal_DLPFC_coloured_by_expr_str.bed
-temp_files/masked_adult_DLPFC_coloured_by_expr_str.bed
-temp_files/masked_CAUD_coloured_by_expr_str.bed
-temp_files/masked_fetal_DLPFC_coloured_by_expr_str.bed
-temp_files/masked_HIP_coloured_by_expr_str.bed
-temp_files/masking_bedfile.bed
+temp_files/*
+backup_temp_files/*
+__pycache__/capseq_pipeline.cpython-310.pyc
