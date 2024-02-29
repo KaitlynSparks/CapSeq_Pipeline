@@ -6,7 +6,7 @@ if __name__ ==  '__main__':
     import os
 
     filter_for_results = True
-    filter_for_genes = True
+    filter_for_genes = False
     filter_for_transcripts = True
     clear_temp = False
 
@@ -24,7 +24,7 @@ if __name__ ==  '__main__':
         results_bedtool = results_bedtool.sort(genome="hg38")
         if filter_for_genes:
             gene_masking_bedtool = capseq_pipeline.gene_filter()
-            results_bedtool = gene_masking_bedtool.intersect(results_bedtool, F = 1.0, wb=True)
+            results_bedtool = results_bedtool.intersect(gene_masking_bedtool, u = True)
         results_bedtool.saveas(gene_masked_bedfile_name)    
         
         gene_masked_bed = pd.read_csv(gene_masked_bedfile_name, sep = '\t')

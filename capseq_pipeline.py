@@ -49,7 +49,7 @@ def transcript_filter(bed_file):
     with open('input/transcripts_of_interest.txt') as f:
         lines = f.read().splitlines()
     transcript_ensemble_ID_list = lines
-    transcript_and_gene_masked_bed = bed_file[bed_file.iloc[:,6].str.contains('|'.join(transcript_ensemble_ID_list), na=False, regex=False)]
+    transcript_and_gene_masked_bed = bed_file[bed_file.iloc[:,3].str.contains('|'.join(transcript_ensemble_ID_list), na=False)]
     return transcript_and_gene_masked_bed
 
 
