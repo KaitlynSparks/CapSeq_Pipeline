@@ -1,0 +1,10 @@
+# Created by venv; see https://docs.python.org/3/library/venv.html
+*.sqlite
+bin/*
+lib/*
+include/*
+man/*
+share/*
+*.cfg
+log.txt
+attributes.csv
