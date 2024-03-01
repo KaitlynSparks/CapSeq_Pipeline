@@ -29,3 +29,4 @@ tools.py
 ValidationSetup.py
 data/hg38.fa.fai
 homology_modelling/*
+test.py
