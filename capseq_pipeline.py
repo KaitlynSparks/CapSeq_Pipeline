@@ -6,7 +6,7 @@ from pybiomart import Server, Dataset
 import requests, sys
 
 def gene_filter():
-
+    #remove "test" to run proper analysis
     with open('input/genes_of_interest.txt') as f:
         lines = f.read().splitlines()
     gene_ensembl_ID_list = lines
@@ -14,7 +14,8 @@ def gene_filter():
     #specify info to get from query
     query_attributes=['chromosome_name', 
                     'start_position',
-                    'end_position']
+                    'end_position',
+                    'strand']
     
     #specify what to filter query on
     query_filters={'transcript_is_canonical': True,
@@ -32,16 +33,25 @@ def gene_filter():
     def chr(x):
         return 'chr' + str(x)
     gene_region_df['Chromosome/scaffold name'] = gene_region_df['Chromosome/scaffold name'].apply(chr) 
+    
+    #make strandedness a string so that it doesnt mess everything up later lol
+    def strandedness_translator(x):
+        return '+' if x==1 else '-'
+        
+    gene_region_df['Strand'] = gene_region_df['Strand'].apply(strandedness_translator)
 
     #create mask bedfile from gene regions
     gene_region_list = gene_region_df.values.tolist()
-    joint_bedtool = pybedtools.BedTool(' '.join(map(str,gene_region_list[0])), from_string=True)
+    joint_bedtool = pybedtools.BedTool(' '.join(map(str,gene_region_list)), from_string=True)
+    
+    #below can be more efficient
     for i in range(1,len(gene_region_list)):
         single_bedtool = pybedtools.BedTool(' '.join(map(str,gene_region_list[i])), from_string=True)
         joint_bedtool = joint_bedtool.cat(single_bedtool, force_truncate=True)
         
     #sort and save mask bed file
     gene_masking_bedtool = joint_bedtool.sort(genome="hg38")
+
     gene_masking_bedtool.saveas('temp_files/gene_masking_bedfile.bed')
     return gene_masking_bedtool
 

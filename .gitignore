@@ -30,3 +30,4 @@ ValidationSetup.py
 data/hg38.fa.fai
 homology_modelling/*
 test.py
+input/genes_of_interest_test.txt
