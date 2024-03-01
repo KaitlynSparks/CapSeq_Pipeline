@@ -15,3 +15,17 @@ data/CaptureSEQ_results/fetal_DLPFC_coloured_by_expr_str.bed
 temp_files/*
 backup_temp_files/*
 __pycache__/capseq_pipeline.cpython-310.pyc
+data/hg38.fa
+Aligner.py
+homology_sequencing.py
+mod_settings.py
+Modeller.py
+modUtils.py
+SequenceSearcher.py
+settings.py
+TemplateCleaner.py
+TemplateSearcher.py
+tools.py
+ValidationSetup.py
+data/hg38.fa.fai
+homology_modelling/*

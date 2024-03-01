@@ -4,6 +4,7 @@ if __name__ ==  '__main__':
     import pybedtools
     import pandas as pd
     import os
+    from ucsc_genomes_downloader import Genome
 
     filter_for_results = True
     filter_for_genes = False
@@ -31,8 +32,12 @@ if __name__ ==  '__main__':
         transcript_and_gene_masked_bed = gene_masked_bed
         if filter_for_transcripts:
             transcript_and_gene_masked_bed = capseq_pipeline.transcript_filter(transcript_and_gene_masked_bed)
-        
-        transcript_and_gene_masked_bed.to_csv('temp_files/transcript_and_' + gene_masked_bedfile_name.split('/')[-1],sep='\t')
+        transcript_and_gene_masked_bed_file_name = 'temp_files/transcript_and_' + gene_masked_bedfile_name.split('/')[-1]
+        transcript_and_gene_masked_bed.to_csv(transcript_and_gene_masked_bed_file_name,sep='\t', index=False)
+
+        final_bedtool = pybedtools.BedTool(transcript_and_gene_masked_bed_file_name)
+        fasta_file_name = 'temp_files/sequences/sequences_' + results_bedfile_name[0:-4] + '.fa'
+        sequences = final_bedtool.sequence(fi= 'data/hg38.fa',split=True, fo=fasta_file_name)
 
 
 if clear_temp:
