@@ -1,7 +1,2 @@
-ENST00000327702.12
-ENST00000347598.9
-ENST00000399641.6
-ENST00000348261.11
-ENST00000565831.6
-ENST00000638323.1
-G10350.470
+*add Ensembl/CapSeq IDs to this file (one per line) and set "filter_for_transcripts = True" in run.py
+*Delete all lines in this file starting with "*"

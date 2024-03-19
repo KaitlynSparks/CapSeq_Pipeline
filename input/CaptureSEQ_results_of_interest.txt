@@ -1,4 +1,3 @@
-adult_DLPFC_coloured_by_expr_str.bed
-CAUD_coloured_by_expr_str.bed
-fetal_DLPFC_coloured_by_expr_str.bed
-HIP_coloured_by_expr_str.bed
+*add .bed filenames to this file (one per line) and set "filter_for_capseq_results = True" in run.py
+*add all bedfiles to data/CaptureSEQ_results folder
+*Delete all lines in this file starting with "*"

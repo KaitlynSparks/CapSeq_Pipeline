@@ -1,10 +1,7 @@
 from pybiomart import Dataset
 
-def gene_filter():
-    #remove "_test" to run proper analysis
-    with open('input/genes_of_interest_test.txt', encoding="utf-8") as f:
-        lines = f.read().splitlines()
-    gene_ensembl_id_list = lines
+def gene_filter(id_list):
+    gene_ensembl_id_list = id_list
     
     #specify info to get from query
     query_attributes=['chromosome_name', 
@@ -42,10 +39,8 @@ def gene_filter():
     gene_region_df.to_csv('temp_files/get_sequences/gene_masking_bedfile.bed',sep='\t', header=False ,index=False)
     return
 
-def transcript_filter(bed_file):
-    with open('input/transcripts_of_interest.txt', encoding="utf-8") as f:
-        lines = f.read().splitlines()
-    transcript_ensemble_ID_list = lines
+def transcript_filter(bed_file, id_list):
+    transcript_ensemble_ID_list = id_list
     transcript_and_gene_masked_bed = bed_file[bed_file.iloc[:,3].str.contains('|'.join(transcript_ensemble_ID_list), na=False)]
     return transcript_and_gene_masked_bed
 
@@ -54,35 +49,3 @@ def chop_sequence(sequence):
     sequence = sequence[sequence.find("M"):-1]
     return sequence
 
-
-
-
-
-
-
-
-
-
-"""     server = "https://rest.ensembl.org"
-    ext = "/xrefs/symbol/homo_sapiens/" + gene_id +"?"
-    r = requests.get(server+ext, headers={ "Content-Type" : "application/json"})
-
-    hg38 = Genome(assembly="hg38")
-    sequences = hg38.bed_to_sequence(transcripts) """
-
-
-#perhaps useful in future
-'''
-headers = ['chrom', 
-            'chromStart',
-            'chromEnd',
-            'name',
-            'score',
-            'strand',
-            'thickStart',
-            'thickEnd',
-            'itemRgb',
-            'blockCount',
-            'blockSizes',
-            'blockStarts']
-'''

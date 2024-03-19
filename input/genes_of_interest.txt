@@ -1,7 +1,2 @@
-ENSG00000165995
-ENSG00000141837
-ENSG00000148408
-ENSG00000151067
-ENSG00000157388
-ENSG00000196557
-ENSG00000067191
+*add Ensembl IDs to this file (one per line) and set "filter_for_genes = True" in run.py
+*Delete all lines in this file starting with "*"
